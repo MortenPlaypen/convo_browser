@@ -38,3 +38,23 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'bundler'
+
+gem 'google-analytics-rails'
+gem 'devise', github: 'plataformatec/devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'bootstrap-sass', '3.3.5'
+gem 'bootstrap-sass-extras'
+gem 'tzinfo-data'
+gem 'validates_formatting_of'
+gem 'binding_of_caller'
+gem 'activeadmin', github: 'gregbell/active_admin'
+
+group :development, :test do
+  gem 'dotenv-rails'
+end
+
+group :development do
+  gem 'better_errors'
+end
