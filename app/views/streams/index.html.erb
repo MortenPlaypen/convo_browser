@@ -1,0 +1,63 @@
+<div id="main-container" class="container">
+  <% if @streams.blank? %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header">
+          <h1><%=t ".title", default: "Create stream" %></h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <%= form_for @stream, html: {class: "form-horizontal form-user"} do |f| %>
+
+        <div class="form-group">
+            <%= f.label :mailbox_hsid, "From which mailbox?", class:  "control-label col-md-4" %>
+            <div class="col-md-4">
+              <%= f.select :mailbox_hsid, current_user.get_mailboxes %>
+            </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+            <%= f.submit "Save", class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div id="main-container" class="container">
+  <% unless @streams.blank? %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header">
+          <h1><%=t ".title", default: "Stream" %></h1>
+        </div>
+      </div>
+    </div>
+
+    <div id="main-container" class="container">
+      <div>
+        <% @email_message[:emails].each do |email| %>
+          <div>
+            Sent: <%= email[:email_date].html_safe %>
+          </div>
+          <div>
+            Subject: <%= email[:email_subject].html_safe %>
+          </div>
+          <div>
+            <%= email[:email_body].html_safe %>
+          </div>
+          <div>
+            <br>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+

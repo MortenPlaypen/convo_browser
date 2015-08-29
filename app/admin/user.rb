@@ -14,5 +14,12 @@ ActiveAdmin.register User do
 #   permitted
 # end
 
+form do |f|
+    inputs 'Details' do
+      input :email
+      input :helpscout_token
+    end
+    actions
+end
 
 end

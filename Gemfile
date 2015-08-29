@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -50,9 +50,11 @@ gem 'tzinfo-data'
 gem 'validates_formatting_of'
 gem 'binding_of_caller'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'httparty' #added after prelang
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'pry' #added after prelang
 end
 
 group :development do
