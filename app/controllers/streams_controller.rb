@@ -13,7 +13,9 @@ class StreamsController < ApplicationController
 	def index
   		@stream=Stream.new
   		@streams = current_user.streams
-  		@email_message = GetConversations.get_conversations(current_user)
+  		if @streams.any?
+  			@email_message = GetConversations.get_conversations(current_user)
+  		end
   	end
 
 	def create

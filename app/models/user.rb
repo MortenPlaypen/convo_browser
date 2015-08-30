@@ -4,17 +4,19 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :trackable, :validatable
   #belongs_to :stream
-  has_many :streams
 
     validate :valid_token, on: :create
 
 	def valid_token
 		auth = {:password => "X", :username => self.helpscout_token}
 		response = HTTParty.get(URI.encode("https://api.helpscout.net/v1/mailboxes.json"), :basic_auth => auth)
-		if response["code"]="401"
+		binding.pry
+		if response["code"]=="401"
 		  errors.add(:helpscout_token, "is not valid")
 		end
 	end
+
+	has_many :streams
 
 	def get_mailboxes
 		auth = {:password => "X", :username => self.helpscout_token}
